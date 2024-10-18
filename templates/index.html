@@ -31,7 +31,7 @@
         h1 {
             font-size: 24px;
             margin-bottom: 10px;
-            color: #4CAF50;
+            color: #00CCFF;
         }
 
         #date-time {
@@ -98,11 +98,17 @@
         var socket = io.connect('http://' + document.domain + ':' + location.port);
 
         // Escuchar el evento 'update_image' enviado por el servidor
-        socket.on('update_image', function(data) {
+        socket.on('update_image', function(data) { 
             // Actualizar la imagen y el mensaje en la página
             document.getElementById('image-display').src = `/static/${data.image}`;
             document.getElementById('message-display').textContent = data.message;
+
+            setTimeout(function() {
+                document.getElementById('image-display').src = `/static/default.png`;
+                document.getElementById('message-display').textContent = "";
+            }, 5000); // 7000 milisegundos = 7 segundos
         });
+        
 
         // Función para actualizar la fecha y hora
         function updateDateTime() {

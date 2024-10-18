@@ -11,6 +11,12 @@ images = {
     "manzana": "manzana.png",
     "botella": "botella.png"
 }
+messages = {
+    "banana": "Caneca verde",
+    "papel": "Caneca blanca",
+    "manzana": "Caneca verde",
+    "botella": "Caneca azul"
+}
 
 @app.route('/')
 def index():
@@ -23,7 +29,7 @@ def get_image():
 
     if text in images:
         image = images[text]
-        message = f"Imagen de {text} encontrada."
+        message = messages[text]
     else:
         image = "default.png"
         message = "Imagen no encontrada."
